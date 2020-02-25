@@ -159,6 +159,7 @@ let mySprite: Sprite = null
 bird()
 background()
 game.splash("press A to jump: avoid sharks and obstacle")
+effects.blizzard.startScreenEffect(5000)
 game.onUpdateInterval(1500, function () {
     info.changeScoreBy(1)
     gap = Math.randomRange(0, 3)
