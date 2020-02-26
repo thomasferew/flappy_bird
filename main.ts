@@ -1,3 +1,4 @@
+// the background of the game
 function background () {
     scene.setBackgroundImage(img`
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
@@ -122,12 +123,14 @@ b b b b b b b b b b b b b b b b b b b b b b b b b b b b f f f f f f f f f f f f 
 b b b b b b b b b b b b b b b b b b b b b b b b b b b b f f f f f f f f f f f f f f e e e e e e e e e e e e e f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 `)
 }
+// if my sprite overlaps with projectile game over.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.vy = -100
 })
+// my sprite
 function bird () {
     mySprite = sprites.create(img`
 . . . . . 2 . . . . . . . . . . 
@@ -160,6 +163,7 @@ bird()
 background()
 game.splash("press A to jump: avoid sharks and obstacle")
 effects.blizzard.startScreenEffect(5000)
+// obsatcles for the game picks random 0 to 3
 game.onUpdateInterval(1500, function () {
     info.changeScoreBy(1)
     gap = Math.randomRange(0, 3)
@@ -485,11 +489,14 @@ game.onUpdateInterval(1500, function () {
     projectile = sprites.createProjectileFromSide(bottomimage, -45, 0)
     projectile.bottom = scene.screenHeight()
 })
+// if sprite touches the top or bottom of map game
+// over
 game.onUpdate(function () {
     if (mySprite.bottom > 120 || mySprite.top < 0) {
         game.over(false)
     }
 })
+// projectile if you overlap with them game over
 game.onUpdateInterval(500, function () {
     projectile2 = sprites.createProjectileFromSide(img`
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
