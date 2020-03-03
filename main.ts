@@ -1,3 +1,23 @@
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectile3 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . 3 3 3 3 3 . . . . . . 
+. . . . 3 3 3 3 3 3 3 . . . . . 
+. . . . 3 3 3 3 3 3 3 3 . . . . 
+. . . . 3 3 3 3 3 3 3 3 . . . . 
+. . . . . 3 3 3 3 3 3 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, mySprite, 50, 100)
+})
 // the background of the game
 function background () {
     scene.setBackgroundImage(img`
@@ -125,6 +145,24 @@ b b b b b b b b b b b b b b b b b b b b b b b b b b b b f f f f f f f f f f f f 
 }
 // if my sprite overlaps with projectile game over.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    projectile3 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . 3 3 3 3 3 . . . . . . 
+. . . . 3 3 3 3 3 3 3 . . . . . 
+. . . . 3 3 3 3 3 3 3 3 . . . . 
+. . . . 3 3 3 3 3 3 3 3 . . . . 
+. . . . . 3 3 3 3 3 3 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, projectile2, 50, 100)
     game.over(false)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -153,12 +191,13 @@ function bird () {
     mySprite.ay = 300
     mySprite.say("ouff", 2000)
 }
-let projectile2: Sprite = null
 let projectile: Sprite = null
 let bottomimage: Image = null
 let topimage: Image = null
 let gap = 0
+let projectile2: Sprite = null
 let mySprite: Sprite = null
+let projectile3: Sprite = null
 bird()
 background()
 game.splash("press A to jump: avoid sharks and obstacle")
@@ -515,6 +554,7 @@ game.onUpdateInterval(500, function () {
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-`, 100, 50)
-    projectile2.setPosition(0, Math.randomRange(0, 100))
+`, -100, 0)
+    projectile2.setPosition(160, 100)
+    projectile2.setPosition(160, Math.randomRange(0, 100))
 })
