@@ -143,8 +143,11 @@ b b b b b b b b b b b b b b b b b b b b b b b b b b b b f f f f f f f f f f f f 
 b b b b b b b b b b b b b b b b b b b b b b b b b b b b f f f f f f f f f f f f f f e e e e e e e e e e e e e f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 `)
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.vy = -100
+})
 // if my sprite overlaps with projectile game over.
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Projectile, function (sprite, otherSprite) {
     projectile3 = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -164,9 +167,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
 . . . . . . . . . . . . . . . . 
 `, projectile2, 50, 100)
     game.over(false)
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.vy = -100
 })
 // my sprite
 function bird () {
@@ -529,6 +529,8 @@ game.onUpdateInterval(1500, function () {
     projectile.bottom = scene.screenHeight()
 })
 // if sprite touches the top or bottom of map game
+//
+//
 // over
 game.onUpdate(function () {
     if (mySprite.bottom > 120 || mySprite.top < 0) {
