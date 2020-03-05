@@ -19,9 +19,6 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
-function nextlevel () {
-	
-}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
@@ -157,6 +154,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Projectile, function (sprite, otherSprite) {
 	
 })
+function nextlevel () {
+	
+}
 // my sprite
 function bird () {
     mySprite = sprites.create(img`
@@ -663,6 +663,7 @@ f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 `)
+        nextlevel()
     }
 })
 // if sprite touches the top or bottom of map game
