@@ -180,6 +180,7 @@ function bird () {
     mySprite.ay = 300
     mySprite.say("ouff", 2000)
 }
+// if projectile overlaps with sprite you lose
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
     projectile2 = sprites.createProjectileFromSide(img`
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -539,8 +540,9 @@ game.onUpdateInterval(1500, function () {
     projectile = sprites.createProjectileFromSide(bottomimage, -45, 0)
     projectile.bottom = scene.screenHeight()
 })
+// if score equals 5 map changes and level 2
 game.onUpdate(function () {
-    if (info.score() == 2) {
+    if (info.score() == 5) {
         scene.setBackgroundImage(img`
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
@@ -663,18 +665,36 @@ f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
 `)
+        projectile2 = sprites.createProjectileFromSide(img`
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . 8 8 8 8 8 8 8 8 8 . . . . . . . . . . . . . . 
+. . . . . . . . . 8 8 8 8 8 8 8 8 8 8 8 . . . . . . . . . . . . 
+. . . . . . . . . 8 8 8 8 8 8 8 8 8 8 8 8 . . . . . . . . . . . 
+. . . . . . . . . 8 8 8 8 8 8 8 8 8 8 8 8 . . . . . . . . . . . 
+. . . . . . . . . . 8 8 8 8 8 8 8 8 8 8 . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+`, 0, 0)
+        projectile2.setPosition(160, 100)
+        projectile2.setPosition(160, Math.randomRange(0, 200))
         nextlevel()
     }
 })
-// if sprite touches the top or bottom of map game
-//
-//
-// over
+// if sprite touches top or bottom of map you lose
 game.onUpdate(function () {
     if (mySprite.bottom > 120 || mySprite.top < 0) {
         game.over(false)
     }
 })
+// of score equals to 10 map changes and level 3
 game.onUpdate(function () {
     if (info.score() == 10) {
         scene.setBackgroundImage(img`
