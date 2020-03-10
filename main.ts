@@ -390,6 +390,8 @@ function level_3 () {
     projectile.bottom = scene.screenHeight()
 }
 function level () {
+    game.splash("LEVEL 1")
+    scene.cameraShake(2, 5000)
     info.changeScoreBy(1)
     gap = Math.randomRange(0, 3)
     if (gap == 0) {
