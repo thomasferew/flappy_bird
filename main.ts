@@ -1562,8 +1562,15 @@ bird()
 background()
 // obsatcles for the game picks random 0 to 3
 game.onUpdateInterval(1500, function () {
+    level()
     if (info.score() == 2) {
         level_2()
+    }
+    if (info.score() == 4) {
+        level_3()
+    }
+    if (info.score() == 5) {
+        level4()
     }
 })
 // if sprite touches top or bottom of map you lose
