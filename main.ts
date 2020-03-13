@@ -874,7 +874,7 @@ function level () {
 . . . . . . e e 7 7 e e e e 7 7 e c e e . . . . 
 . . . . . . e e 6 e e e e e e 6 e e f . . . . . 
 `
-    } else if (true) {
+    } else if (gap == 2) {
         topimage = img`
 . . . . . 6 e e e e e e e e e e c e 6 . . . . . 
 . . . . 6 7 7 6 e e e e e e e e e 6 7 6 . . . . 
